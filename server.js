@@ -17,7 +17,13 @@ async function callModel(model, prompt) {
         "Authorization": `Bearer ${HF_API_KEY}`,
         "Content-Type": "application/json"
       },
-      body: JSON.stringify({ inputs: prompt })
+      body: JSON.stringify({
+  inputs: `Answer the following question clearly and professionally.
+Do not mention AI, model, or training data.
+Give a final helpful answer for a user.
+
+Question: ${prompt}`
+})
     }
   );
   return await res.json();
